@@ -1,4 +1,4 @@
-package com.goni99.smartlibrarysystem.network
+package com.goni99.smartlibrarysystem.mqtt
 
 import android.content.Context
 import android.util.Log

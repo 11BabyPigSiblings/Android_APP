@@ -30,7 +30,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_scrollFlags="scroll|enterAlways|snap"
                     app:navigationIcon="@drawable/ic_baseline_home_24"
-                    app:title="도서 대여 내역"
+                    app:title="도서관"
                     app:menu="@menu/item_top_app_bar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -43,6 +43,14 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <FrameLayout
+        android:id="@+id/user_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/library_coordinator_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="10dp"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/library_frame"

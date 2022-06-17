@@ -37,8 +37,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/id"
             app:boxStrokeColor="@color/colorMain"
-            app:counterEnabled="true"
-            app:counterMaxLength="12"
             app:endIconMode="clear_text"
             app:helperText="@string/input_id"
             app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.MediumComponent"
@@ -49,8 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:inputType="text"
-                android:maxLength="12" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

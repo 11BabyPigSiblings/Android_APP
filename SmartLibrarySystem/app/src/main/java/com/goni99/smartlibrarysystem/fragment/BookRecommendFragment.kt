@@ -1,14 +1,16 @@
 package com.goni99.smartlibrarysystem.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.goni99.smartlibrarysystem.databinding.FragmentSecondBinding
+import com.goni99.smartlibrarysystem.databinding.FragmentBookRecommendBinding
+import com.goni99.smartlibrarysystem.utils.Constants
 
 class BookRecommendFragment:Fragment() {
-    private var mBinding: FragmentSecondBinding? = null
+    private var mBinding: FragmentBookRecommendBinding? = null
     private val binding get() = mBinding!!
 
     override fun onCreateView(
@@ -16,12 +18,13 @@ class BookRecommendFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentSecondBinding.inflate(inflater, container, false)
+        mBinding = FragmentBookRecommendBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(Constants.TAG,"BookRecommendFragment - onViewCreated() called")
     }
 
     override fun onDestroy() {

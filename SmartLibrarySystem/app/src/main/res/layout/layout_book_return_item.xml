@@ -7,9 +7,15 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_book_item"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/book_return_image"
@@ -34,7 +40,9 @@
                 android:layout_height="wrap_content"
                 android:text="책 제목"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/book_return_page_author"
