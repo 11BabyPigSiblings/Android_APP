@@ -23,6 +23,36 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/ic_baseline_error_outline_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="에러 발생"
+            android:textSize="50sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/error_image"
+            app:layout_constraintEnd_toEndOf="@+id/error_image"
+            app:layout_constraintTop_toBottomOf="@+id/error_image"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <!--  메인 화면  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_layout"
@@ -30,17 +60,112 @@
         android:layout_height="match_parent"
         android:visibility="invisible">
 
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toTopOf="@id/belt_status_card_view"
+            app:layout_constraintEnd_toEndOf="@id/belt_status_card_view"
+            app:layout_constraintStart_toStartOf="@id/belt_status_card_view">
+
+            <Button
+                android:id="@+id/force_belt_start_btn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorLightMain"
+                android:text="강제 시작"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/force_belt_stop_btn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorLightMain"
+                android:text="강제 종료"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/belt_status_card_view"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/colorLightGray"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/belt_status_correct"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:elevation="15dp"
+                    android:src="@drawable/ic_baseline_circle_24" />
+
+                <ImageView
+                    android:id="@+id/belt_status_error"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:elevation="15dp"
+                    android:src="@drawable/ic_baseline_circle_24" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <ImageView
+            android:id="@+id/line1_object"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="15dp"
+            android:src="@drawable/object"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/conveyor_belt_card_view"
+            app:layout_constraintEnd_toEndOf="@id/sort_box_1"
+            app:layout_constraintStart_toStartOf="@id/sort_box_1"
+            app:layout_constraintTop_toTopOf="@id/conveyor_belt_card_view" />
+
+        <ImageView
+            android:id="@+id/line2_object"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:elevation="15dp"
+            android:src="@drawable/object"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/conveyor_belt_card_view"
+            app:layout_constraintEnd_toEndOf="@id/sort_box_2"
+            app:layout_constraintStart_toStartOf="@id/sort_box_2"
+            app:layout_constraintTop_toTopOf="@id/conveyor_belt_card_view" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/rgb_led_card_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/sort_box_1"
             app:layout_constraintEnd_toStartOf="@id/conveyor_belt_card_view"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.325">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,6 +173,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/RGB_light"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:src="@drawable/ic_baseline_highlight_24"
@@ -69,9 +195,9 @@
             android:backgroundTint="@color/colorLightGray"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/conveyor_belt_card_view"
             app:layout_constraintEnd_toStartOf="@id/conveyor_belt_card_view"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/conveyor_belt_card_view">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -102,22 +228,71 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="5dp"
+                    android:elevation="12dp"
+                    android:src="@drawable/ic_baseline_double_arrow_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="12dp"
+                    android:src="@drawable/ic_baseline_double_arrow_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginEnd="5dp"
+                    android:elevation="12dp"
+                    android:src="@drawable/ic_baseline_double_arrow_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/sort_box_1_status"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintBottom_toTopOf="@id/sort_box_1"
+            app:layout_constraintStart_toStartOf="@id/sort_box_1" />
+
+        <ImageView
+            android:id="@+id/sort_box_2_status"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintBottom_toTopOf="@id/sort_box_2"
+            app:layout_constraintStart_toStartOf="@id/sort_box_2" />
+
+        <ImageView
+            android:id="@+id/sort_box_3_status"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintBottom_toTopOf="@id/sort_box_3"
+            app:layout_constraintStart_toStartOf="@id/sort_box_3" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/sort_box_1"
@@ -138,9 +313,15 @@
 
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sort_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,14 +336,27 @@
             android:backgroundTint="@color/colorLightGray"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/conveyor_belt_card_view"
             app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="@id/conveyor_belt_card_view"
-            app:layout_constraintTop_toBottomOf="@id/conveyor_belt_card_view">
+            app:layout_constraintTop_toBottomOf="@id/conveyor_belt_card_view"
+            app:layout_constraintVertical_bias="0.69">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sort_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -185,6 +379,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:elevation="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sort_cart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -203,7 +408,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/data_status_card_view1"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp"
@@ -232,7 +437,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="책 반납 현황"
+                    android:text="책 반납 바코드 현황"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -244,11 +449,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_margin="10dp"
-                    tools:listitem="@layout/item_barcode_data"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/book_return_status_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/book_return_status_text_view"
+                    tools:listitem="@layout/item_barcode_data" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,8 +463,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/data_status_card_view2"
-            android:layout_width="325dp"
-            android:layout_height="300dp"
+            android:layout_width="305dp"
+            android:layout_height="275dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp"
@@ -296,49 +501,51 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/book_cart1_card_view"
-                    android:layout_width="300dp"
-                    android:layout_height="70dp"
+                    android:layout_width="265dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/book_cart_status_text_view">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/rounded_bg_main"
+                            android:elevation="10dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/sort_box_1_image"
+                            app:layout_constraintTop_toTopOf="@id/sort_box_1_image" />
+
                         <ImageView
+                            android:id="@+id/sort_box_1_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/box"
                             android:layout_margin="10dp"
+                            android:src="@drawable/box"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <Switch
                             android:id="@+id/book_cart1_status_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
-
-                        <TextView
-                            android:id="@+id/book_cart1_status_counting_text_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="30sp"
-                            android:textColor="@color/black"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/book_cart1_status_switch"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintHorizontal_bias="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -347,49 +554,52 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/book_cart2_card_view"
-                    android:layout_width="300dp"
-                    android:layout_height="70dp"
+                    android:layout_width="265dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/book_cart1_card_view">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/rounded_bg_main"
+                            android:elevation="10dp"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/sort_box_2_image"
+                            app:layout_constraintTop_toTopOf="@id/sort_box_2_image" />
+
                         <ImageView
+                            android:id="@+id/sort_box_2_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/box"
                             android:layout_margin="10dp"
+                            android:src="@drawable/box"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <Switch
                             android:id="@+id/book_cart2_status_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
+                            app:layout_constraintHorizontal_bias="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/book_cart2_status_counting_text_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="30sp"
-                            android:textColor="@color/black"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/book_cart2_status_switch"
-                            app:layout_constraintEnd_toEndOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -398,49 +608,51 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/book_cart3_card_view"
-                    android:layout_width="300dp"
-                    android:layout_height="70dp"
+                    android:layout_width="265dp"
+                    android:layout_height="60dp"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/book_cart2_card_view">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/rounded_bg_main"
+                            android:elevation="10dp"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/sort_box_3_image"
+                            app:layout_constraintTop_toTopOf="@id/sort_box_3_image" />
+
                         <ImageView
+                            android:id="@+id/sort_box_3_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/box"
                             android:layout_margin="10dp"
+                            android:src="@drawable/box"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <Switch
                             android:id="@+id/book_cart3_status_switch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"/>
-
-                        <TextView
-                            android:id="@+id/book_cart3_status_counting_text_view"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textSize="30sp"
-                            android:textColor="@color/black"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/book_cart3_status_switch"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintHorizontal_bias="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -453,8 +665,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/data_status_card_view3"
-            android:layout_width="325dp"
-            android:layout_height="300dp"
+            android:layout_width="305dp"
+            android:layout_height="275dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp"
@@ -498,17 +710,17 @@
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     app:layout_constraintBottom_toTopOf="@+id/conveyor_belt_status_switch"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Switch
                     android:id="@+id/conveyor_belt_status_switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -516,8 +728,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/data_status_card_view4"
-            android:layout_width="325dp"
-            android:layout_height="300dp"
+            android:layout_width="305dp"
+            android:layout_height="275dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp"
@@ -557,60 +769,60 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/ic_baseline_adb_24"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.3"/>
+                    app:layout_constraintHorizontal_bias="0.3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
                     android:id="@+id/rgb_led_color_status_layout"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:layout_constraintTop_toTopOf="@+id/rgb_led_color_status_image_view"
-                    app:layout_constraintStart_toEndOf="@+id/rgb_led_color_status_image_view"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@id/rgb_led_color_status_image_view"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="2"
+                    app:layout_constraintBottom_toBottomOf="@id/rgb_led_color_status_image_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/rgb_led_color_status_image_view"
+                    app:layout_constraintTop_toTopOf="@+id/rgb_led_color_status_image_view">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="R"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="G"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="B"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:layout_gravity="center"/>
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/rgb_led_color_R_data"
@@ -618,24 +830,25 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
+
                         <TextView
                             android:id="@+id/rgb_led_color_G_data"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
+
                         <TextView
                             android:id="@+id/rgb_led_color_B_data"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>

@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.goni99.smartlibraryadmin">
 
+    <!-- 인터넷 권한 허용 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 네트워크에 연결되었는 지 확인할 수 있게하는 권한 허용 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--디바스가 sleep 상태에 빠지지 않도록
+         ex) 폰 사용 안하면 배터리가 자연스럽게 절전모드로 해주는 것-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
