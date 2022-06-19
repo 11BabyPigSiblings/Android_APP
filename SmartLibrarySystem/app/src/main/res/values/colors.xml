@@ -12,4 +12,6 @@
     <color name="colorLightGray">#BDBDBD</color>
     <color name="colorMain">#5990FF</color>
     <color name="colorLightMain">#A9C6FF</color>
+    <color name="colorDeepMain">#3A5EA6</color>
+
 </resources>
