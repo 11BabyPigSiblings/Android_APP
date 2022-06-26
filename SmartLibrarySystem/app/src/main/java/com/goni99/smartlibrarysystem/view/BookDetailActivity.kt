@@ -2,12 +2,9 @@ package com.goni99.smartlibrarysystem.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.goni99.smartlibrarysystem.R
 import com.goni99.smartlibrarysystem.databinding.ActivityBookDetailBinding
-import com.goni99.smartlibrarysystem.model.RentBook
-import com.goni99.smartlibrarysystem.utils.Constants.TAG
 
 class BookDetailActivity : AppCompatActivity() {
     val binding by lazy {

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.goni99.smartlibrarysystem.R
-import com.goni99.smartlibrarysystem.model.RentBook
+import com.goni99.smartlibrarysystem.model.Book
 import com.goni99.smartlibrarysystem.utils.Constants.TAG
 
 class BookRentRecyclerViewAdapter(
     bookRentRecyclerViewInterface: IBookRentRecyclerView
 ): RecyclerView.Adapter<BookRentRecyclerViewHolder>() {
-    private var bookList = ArrayList<RentBook>()
+    private var bookList = ArrayList<Book>()
     private var iBookRentRecyclerView: IBookRentRecyclerView? = null
 
     init {
@@ -31,7 +31,7 @@ class BookRentRecyclerViewAdapter(
 
     override fun getItemCount(): Int = bookList.size
 
-    fun setBookList(bookList: RentBook){
+    fun setBookList(bookList: Book){
         this.bookList.add(bookList)
     }
 }

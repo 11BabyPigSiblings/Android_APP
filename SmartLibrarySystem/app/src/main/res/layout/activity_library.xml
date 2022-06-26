@@ -30,7 +30,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_scrollFlags="scroll|enterAlways|snap"
                     app:navigationIcon="@drawable/ic_baseline_home_24"
-                    app:title="도서관"
+                    app:title="스타북스"
                     app:menu="@menu/item_top_app_bar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.goni99.smartlibrarysystem.App
 import com.goni99.smartlibrarysystem.R
-import com.goni99.smartlibrarysystem.model.RentBook
+import com.goni99.smartlibrarysystem.model.Book
 import com.goni99.smartlibrarysystem.utils.Constants
 
 class BookRentRecyclerViewHolder(
@@ -35,7 +35,7 @@ class BookRentRecyclerViewHolder(
     }
 
 
-    fun bind(bookList: RentBook){
+    fun bind(bookList: Book){
         bookTitle.text = bookList.title
         bookAuthor.text = bookList.author
         bookPublisher.text = bookList.publisher

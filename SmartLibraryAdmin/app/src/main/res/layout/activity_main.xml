@@ -20,7 +20,7 @@
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:menu="@menu/top_app_bar_menu"
             app:navigationIcon="@drawable/ic_baseline_home_24"
-            app:title="도서관" />
+            app:title="스타북스" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

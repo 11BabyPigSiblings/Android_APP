@@ -115,6 +115,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
         binding.dataResetButton.setOnClickListener {
+            Toast.makeText(this, "분류 카트 데이터 리셋",Toast.LENGTH_SHORT).show()
             sortBox1Counting = 0
             sortBox2Counting = 0
             sortBox3Counting = 0

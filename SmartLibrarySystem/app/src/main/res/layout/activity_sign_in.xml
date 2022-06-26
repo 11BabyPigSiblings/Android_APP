@@ -6,29 +6,40 @@
     android:id="@+id/sign_in_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.SignInActivity">
 
     <LinearLayout
+        android:background="@drawable/smoke_background"
+        android:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="도서관"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="225dp"
             android:layout_height="225dp"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/main_book" />
+            android:src="@drawable/starbooks" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="STARBOOKS"
+            android:textColor="@color/colorMain"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Library"
+            android:textColor="@color/colorMain"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/sign_in_id_text_layout"
@@ -36,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/id"
+            android:background="@color/white"
             app:boxStrokeColor="@color/colorMain"
             app:endIconMode="clear_text"
             app:helperText="@string/input_id"
@@ -58,6 +70,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/pwd"
             android:layout_marginBottom="20dp"
+            android:background="@color/white"
             app:boxStrokeColor="@color/colorMain"
             app:counterEnabled="true"
             app:counterMaxLength="12"
@@ -71,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:maxLength="12" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rounded_custom_button"
-            android:drawableStart="@drawable/resize_chat"
+            android:drawableStart="@drawable/resize_checked"
             android:paddingStart="10dp"
             android:paddingEnd="35dp"
             android:textColor="@color/white"

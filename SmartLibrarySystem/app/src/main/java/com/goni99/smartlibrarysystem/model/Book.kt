@@ -1,6 +1,6 @@
 package com.goni99.smartlibrarysystem.model
 
-data class RentBook(
+data class Book(
     val id: Int,
     val isbn13: String?,
     val title: String?,

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.goni99.smartlibrarysystem.databinding.FragmentBookRentStatusBinding
-import com.goni99.smartlibrarysystem.model.RentBook
+import com.goni99.smartlibrarysystem.model.Book
 import com.goni99.smartlibrarysystem.recyclerview.BookRentRecyclerViewAdapter
 import com.goni99.smartlibrarysystem.recyclerview.IBookRentRecyclerView
 import com.goni99.smartlibrarysystem.utils.Constants
@@ -28,7 +28,7 @@ class BookRentStatusFragment :
     private lateinit var libraryViewModel: LibraryViewModel
     private lateinit var bookRentRecyclerViewAdapter: BookRentRecyclerViewAdapter
 
-    private lateinit var rentBook: RentBook
+    private lateinit var rentBook: Book
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +37,7 @@ class BookRentStatusFragment :
     ): View? {
         libraryViewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())
             .get(LibraryViewModel::class.java)
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onViewCreated() called")
 
         mBinding = FragmentBookRentStatusBinding.inflate(inflater, container, false)
         return binding.root
@@ -44,12 +45,32 @@ class BookRentStatusFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(Constants.TAG,"BookRentStatusFragment - onViewCreated() called")
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onViewCreated() called")
         bookRentRecyclerViewAdapter = BookRentRecyclerViewAdapter(this)
         binding.bookReturnRecyclerView.adapter = bookRentRecyclerViewAdapter
         binding.bookReturnRecyclerView.layoutManager = LinearLayoutManager(context)
 
         observeData()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onStart() called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onResume() called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onPause() called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("fragment_lifecycle","BookRentStatusFragment - onStop() called")
     }
 
     fun observeData(){
@@ -60,6 +81,13 @@ class BookRentStatusFragment :
                     bookRentRecyclerViewAdapter.setBookList(it)
                     bookRentRecyclerViewAdapter.notifyDataSetChanged()
                 }
+            }
+        })
+        libraryViewModel.isRentBookList.observe(viewLifecycleOwner, Observer {
+            if (it == false){
+                binding.rentBookLoadingLayout.visibility = View.VISIBLE
+            } else {
+                binding.rentBookLoadingLayout.visibility = View.INVISIBLE
             }
         })
     }

@@ -10,9 +10,9 @@
     <color name="gray">#717171</color>
     <color name="colorGreen">#188A1D</color>
     <color name="colorLightGray">#AFAFAF</color>
-    <color name="colorMain">#5990FF</color>
-    <color name="colorLightMain">#A9C6FF</color>
-    <color name="colorDeepMain">#3A5EA6</color>
+    <color name="colorMain">#00704A</color>
+    <color name="colorLightMain">#00D58C</color>
+    <color name="colorDeepMain">#7E00704A</color>
     <color name="colorRed">#FF0000</color>
     <color name="colorBlue">#0049FF</color>
     <color name="colorYellow">#FFEB3B</color>
